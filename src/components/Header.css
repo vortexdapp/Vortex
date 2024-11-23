@@ -1,0 +1,127 @@
+.header {
+  background-color: #00000000;
+  padding: 11px 20px; /* Add padding for left and right spacing */
+  color: white;
+  display: flex;
+  justify-content: space-between; /* Space between logo and button */
+  align-items: center;
+  width: 100%; /* Ensure header takes full width */
+  max-width: 100%; /* Remove fixed width to avoid overflow */
+  margin: 0 auto; /* Center the header horizontally */
+  box-sizing: border-box; /* Include padding in width calculation */
+  overflow: hidden; /* Prevent any child elements from overflowing */
+}
+
+.logo {
+  width: 80px; /* Adjust the width according to your preference */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.header-content {
+  padding: 10px 0; /* Adjust padding for header content */
+  max-width: 100%; /* Ensure content does not exceed viewport width */
+  margin: 0 auto; /* Center the content horizontally */
+  display: flex;
+  justify-content: space-between; /* Space between logo and button */
+  align-items: center;
+  width: 100%; /* Ensure header content takes full width */
+  box-sizing: border-box; /* Prevent padding from causing overflow */
+}
+
+.div-button {
+  margin-right: 20px; /* Add margin to move the button away from the edge */
+}
+
+.menu {
+  display: flex; /* Horizontal menu on desktop */
+  gap: 20px; /* Space between links */
+  overflow: hidden; /* Prevent links from overflowing */
+}
+
+.menu a {
+  text-decoration: none;
+  color: #ffffff; /* Adjust color as needed */
+  font-weight: 500;
+  font-family: 'Technoma', sans-serif; /* Use Technoma font */
+  font-size: 21px; /* Set font size to 21px */
+}
+
+.menu a:hover {
+  color: #a333ff; /* Change to your desired hover color */
+}
+
+.burger-menu {
+  display: none; /* Hide burger menu on desktop */
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Prevent horizontal overflow on smaller screens */
+@media only screen and (max-width: 600px) {
+  .header {
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  .logo {
+    width: 70px; /* Adjust the width for smaller screens */
+  }
+
+  .div-button {
+    margin-right: 10px; /* Adjust for smaller screens */
+    flex-grow: 0; /* Prevent the button div from growing */
+    text-align: center; /* Center the button */
+  }
+
+  .div-logo, .div-burger {
+    max-width: 33%; /* Each div takes 33% of the width */
+  }
+
+  /* Ensure each column occupies 33% of the screen width */
+  .header-content > * {
+    text-align: center; /* Center content within each column */
+  }
+
+  .menu {
+    flex-direction: column; /* Stack links vertically */
+    position: absolute;
+    right: 0;
+    top: 60px; /* Adjust based on header height */
+    background-color: rgba(0, 0, 0, 0.436); /* Adjust color as needed */
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .menu.open {
+    display: flex; /* Show menu when burger is clicked */
+  }
+
+  .menu a {
+    font-size: 18px; /* Slightly smaller font for mobile */
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block; /* Show burger menu on mobile */
+    margin-top: 0px;
+  }
+
+  .menu {
+    display: none; /* Hide horizontal menu on mobile */
+  }
+
+  .menu.open {
+    display: flex; /* Show menu when burger is clicked */
+  }
+}
+
+.connected-chain {
+  color: white;
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+}

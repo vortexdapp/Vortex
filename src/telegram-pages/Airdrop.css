@@ -1,0 +1,50 @@
+.airdrop {
+  text-align: center;
+  align-items: center;
+  color: #f0f0f0;
+  position: fixed;
+  margin-top: 100px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s;
+}
+
+.task:hover {
+  background-color: #292929;
+}
+
+.task span {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.task button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.task button[disabled] {
+  background-color: #28a745;
+  cursor: default;
+}
+
+.gem-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}

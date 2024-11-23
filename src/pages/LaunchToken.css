@@ -1,0 +1,195 @@
+body {
+    font-family: 'Luciole', sans-serif; /* Use Luciole for body text */
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Set background color to black */
+    background-image: none; /* Override any background image set in index.css */
+}
+
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 20px;
+    position: relative; /* Position relative to stack content above overlay */
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+.factory-container {
+    background: linear-gradient(135deg, #000000, #073b62, #bd41d6);
+    
+    border-radius: 40px; /* Increased border radius for more rounded corners */
+  
+    padding: 20px 30px 20px 30px;
+    border:0px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: transform 0.3s;
+    margin-top: 10px; /* Add margin to separate from subtitle */
+}
+
+
+
+
+
+.titlelaunch {
+    margin: 0px auto;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+
+.subtitlefactory {
+    font-family: 'Luciole', sans-serif; /* Use Luciole for the subtitle */
+    font-size: 18px;
+    color: #fff; /* White color for subtitle */
+    margin-bottom: 20px; /* Space below subtitle */
+    margin-top:-3px;
+    font-weight: 300;
+}
+
+.input {
+    width: 100%;
+    padding: 8px; /* Reduced padding for a more compact look */
+    margin: 10px 0; /* Keep vertical margin */
+    border-radius: 6px; /* 6px border radius */
+    background: rgba(255, 255, 255, 0.231); /* Slightly transparent background */
+   
+    border: none; /* Remove border color */
+    transition: background-color 0.3s;
+}
+
+.input::placeholder {
+    color: #fff; /* Set placeholder text color to white */
+    opacity: 0.7; /* Optional: Adjust opacity for better visibility */
+}
+
+.input:focus {
+    background: rgba(255, 255, 255, 0.3); /* Change background on focus */
+    outline: none;
+}
+
+.custom-file-input {
+    margin: 30px 0px 0px 0px; /* Increased margin for more space */
+    padding: 20px 20px 20px 20px; /* Increased padding for a more prominent look */
+    background: rgba(255, 255, 255, 0.231); /* Slightly transparent background */
+    border-radius: 10px; /* More pronounced rounded corners */
+    color: #ffffffaf;
+    text-align: left; /* Align text to the left */
+    border: 0px solid #ffffff4c; /* Add a solid white border */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+    font-family: 'Technoma', sans-serif;
+    font-size:22px;
+    letter-spacing: 2px; /* Increased space between letters */
+}
+
+.custom-file-input:hover {
+    border-color: #bd41d6; /* Change border color on hover */
+}
+
+.custom-file-input span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffffaf;
+}
+
+
+.error-message {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.createerc {margin-top:50px;}
+.token_address_message,
+.pool_address_message {
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    border-radius: 6px; /* 6px border radius */
+    padding: 10px;
+    margin: 10px 0;
+    color: #fff; /* White text color */
+}
+
+
+.token_address_message a,
+.pool_address_message a {
+    color: #fff; /* White for links */
+    text-decoration: underline;
+}
+
+.token_address_message a:hover,
+.pool_address_message a:hover {
+    text-decoration: none;
+    color: #fff; /* Change color on hover */
+}
+
+.deploy-button {
+   /* Add margin-top of 50px */
+    margin-bottom:20px;
+    margin-top:20px;
+    background-color: #1d00aa; /* Set background color */
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove default border */
+    padding: 10px 60px; /* Increased padding horizontally for a bigger button */
+    border-radius: 10px; /* Optional: Add border radius */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    font-size:22px;
+}
+
+.deploy-button:hover {
+    background-color: #ffffff; /* Optional: Darker shade on hover */
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Space between columns */
+    margin-top: 10px; /* Space above the input container */
+}
+
+.input-container .input {
+    width: 48%; /* Set width to 48% for two columns */
+    margin-bottom: 10px; /* Space below each input */
+}
+
+.liquidity-toggle {
+  font-family: 'Technoma', sans-serif;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2); /* Background color */
+  border-radius: 10px;
+  padding: 10px; /* Increased padding for better appearance */
+  text-align: center;
+  margin-top: 10px;
+  font-size: 22px;
+  color: #ffffffaf;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.liquidity-toggle:hover {
+  background: rgba(255, 255, 255, 0.3); /* Change background on hover */
+}
+
+.liquidity-section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.liquidity-label {
+  color: #fff; /* Label color */
+}
+
+.liquidity-slider {
+  width: 100%; /* Full width for the slider */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) { /* Adjust the max-width as needed */
+    .input-container .input {
+        width: 100%; /* Set width to 100% for single column on mobile */
+    }
+}

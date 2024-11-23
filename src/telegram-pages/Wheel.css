@@ -1,0 +1,45 @@
+/* Wheel.css */
+
+.wheel-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.wheel-container {
+  position: relative;
+}
+
+.wheel-wrapper {
+  width: 300px;
+  height: 300px;
+}
+
+.arrow {
+  position: absolute;
+  top: 0px; /* Position arrow above the wheel */
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red; /* Arrow color */
+  z-index: 10;
+}
+
+.spin-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.prize-announcement {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #e6e6e6;
+}
