@@ -41,7 +41,7 @@ function TokensList({ limit }) {
               // Replace this with the actual API endpoint and parameters
               // For example, using CoinGecko's API:
               const response = await axios.get(
-                `https://api.coingecko.com/api/v3/coins/ethereum/contract/${token.address}`
+                `https://api.coingecko.com/api/v3/coins/sepolia-testnet/contract/${token.address}`
               );
 
               const marketData = response.data.market_data;
