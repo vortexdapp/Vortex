@@ -1,24 +1,23 @@
 .swap-container {
   max-width: 400px;
+  border: 10px solid #ffffff65;    
   margin: 0 auto;
   padding: 20px;
-  color: #333;
-  border: 1px solid #e0e0e0;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-family: "Arial", sans-serif;
+  font-family: "Technoma", sans-serif;
 }
 .swap-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 34px;
+  margin-bottom: 0px;
   color: #dfdfdf;
  
 }
 
 .balance-display {
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 24px;
   color: #e1e1e1;
 }
 
@@ -27,16 +26,9 @@
   color: #ffffff;
 }
 
-.swap-input label {
-  display: block;
-  font-size: 14px;
-  color: #ffffff;
-  margin-bottom: 8px;
-  text-align: left;
-}
 
 .swap-container p {
-  font-size: 14px;
+  font-size: 22px;
   color: #dcdcdc;
   margin-top: 10px;
 }
@@ -46,11 +38,13 @@
   padding: 8px; /* Reduced padding for a more compact look */
   margin: 10px 0; /* Keep vertical margin */
   border-radius: 6px; /* 6px border radius */
-  background: rgba(255, 255, 255, 0.231); /* Slightly transparent background */
-  color: #000000; /* Set placeholder text color to white */
+  background: rgb(255, 255, 255); /* Slightly transparent background */
+  color: #000000; 
   border: none; /* Remove border color */
   transition: background-color 0.3s;
 }
+
+.input::placeholder {color:black;}
 
 
 
@@ -65,13 +59,3 @@ button:disabled {
   margin-top: 10px;
 }
 
-.swap-container button.switch-direction {
-  background-color: #f4f4f4;
-  color: #4a90e2;
-  border: 1px solid #4a90e2;
-}
-
-.swap-container button.switch-direction:hover {
-  background-color: #4a90e2;
-  color: #fff;
-}

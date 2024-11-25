@@ -1,13 +1,19 @@
-// src/components/Header.js
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import VortexConnect from "./VortexConnect"; // Import VortexConnect
 
 const Header = ({ onWalletConnect }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu state
+  };
+
   return (
     <header>
       <div className="header-content">
+        {/* Logo */}
         <div className="div-logo">
           <Link to="https://vortexdapp.com">
             <img
@@ -17,9 +23,16 @@ const Header = ({ onWalletConnect }) => {
             />
           </Link>
         </div>
+
+        {/* Burger Menu */}
         <div className="div-burger">
-          <button className="burger-menu">&#9776;</button>
-          <nav className="menu">
+          <button
+            className="burger-menu"
+            onClick={toggleMenu} // Add toggle functionality
+          >
+            &#9776;
+          </button>
+          <nav className={`menu ${isMenuOpen ? "open" : ""}`}>
             <Link to="/">Home</Link>
             <Link to="/factory">Launch</Link>
             <Link to="/staking">Stake</Link>
@@ -34,7 +47,7 @@ const Header = ({ onWalletConnect }) => {
           </nav>
         </div>
 
-        {/* Render VortexConnect here instead of custom connect button */}
+        {/* VortexConnect */}
         <div className="div-button">
           <VortexConnect onConnect={onWalletConnect} />
         </div>

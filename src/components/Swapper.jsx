@@ -201,9 +201,9 @@ const Swapper = ({ tokenAddress }) => {
       </div>
 
       <div className="swap-input">
-        <label>{isEthToToken ? "ETH Amount:" : "Token Amount:"}</label>
+       
         <input
-          className="input3"
+          className="input"
           type="number"
           placeholder={`Enter ${isEthToToken ? "ETH" : "Token"} amount`}
           value={inputAmount}

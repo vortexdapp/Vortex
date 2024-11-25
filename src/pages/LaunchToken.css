@@ -59,25 +59,29 @@ body {
     padding: 6px; /* Reduced padding for a more compact look */
     margin: 5px 0; /* Keep vertical margin */
     border-radius: 6px; /* 6px border radius */
-    background: #EF10FFE1; /* Slightly transparent background */
-   color:#ffffff;
+    background: #ffffff; /* Slightly transparent background */
+   color:#000000;
     border: none; /* Remove border color */
     transition: background-color 0.3s;
 }
 
 .input::placeholder {
-    color: #fff; /* Set placeholder text color to white */
+    color: #000000; /* Set placeholder text color to white */
     opacity: 1; /* Optional: Adjust opacity for better visibility */
 }
 
 .input:focus {
-    background: rgba(255, 255, 255, 0.3); /* Change background on focus */
+    background:#ffffffe1; /* Change background on focus */
     outline: none;
-}
+    color:rgb(0, 0, 0);
+}   
+
+
 
 .input:hover {
-    background: rgba(255, 255, 255, 0.3); /* Change background on focus */
+    background: #ffffffd9; /* Change background on focus */
     outline: none;
+    color:white,
 }
 
 .custom-file-input {
@@ -199,5 +203,13 @@ body {
 @media (max-width: 768px) { /* Adjust the max-width as needed */
     .input-container .input {
         width: 100%; /* Set width to 100% for single column on mobile */
+        
     }
+
+    .titlelaunch {margin-top:20px;
+    padding:15px;}
+
+    .center-container{padding:12px;}
+
+    .factory-container{border-width: 7px;}
 }

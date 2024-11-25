@@ -106,8 +106,18 @@
 }
 
 @media only screen and (max-width: 600px) {
+
+
+  .titlehome {
+    font-size: 45px;
+    font-weight: 400;
+    margin-bottom:0px;
+    margin-top:0px;
+  }
+
   .logo2 {
-    width: 100px; /* Adjust the width for smaller screens */
+    width: 150px; /* Adjust the width for smaller screens */
+    margin-bottom:30px;
   }
 }
 

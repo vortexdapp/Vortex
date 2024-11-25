@@ -494,18 +494,7 @@ const removeCommas = (value) => {
                 </a>
               </p>
 
-              {poolAddress && (
-                <p className="pool_address_message">
-                  Your liquidity pool address is:{" "}
-                  <a
-                    href={`${explorerUrl}/address/${poolAddress}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {poolAddress}
-                  </a>
-                </p>
-              )}
+              
 
               <Link to={`/token/${deployedContractAddress}`}>
                 <button className="deploy-button">Next Step</button>

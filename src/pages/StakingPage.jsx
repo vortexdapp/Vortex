@@ -545,7 +545,7 @@ const StakingPage = () => {
       <Header />
       <div>
         <h1 className="titlelaunch">
-          Earn from every token deployed through Vortex
+          Earn fees from all tokens
         </h1>
         <h5 className="subtitlefactory">
           Lend your ETH and get a share of all revenues. Only live on Sepolia.

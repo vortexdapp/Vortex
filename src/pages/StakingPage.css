@@ -11,7 +11,7 @@
 }
 
 .stake-button:hover {
-  background-color: #4D0AA7; /* Change background color on hover */
+  background-color: #EF10FFE1; /* Change background color on hover */
   color: #ffffff; /* Text color matches the original button background */
 }
 
@@ -159,10 +159,10 @@ font-size:18px;}
 
 @media only screen and (max-width: 600px) {
   .staking-container {
-    margin: 10px 10px 10px 10px; /* Add margin for mobile devices */
-    border: 0px solid #ffffff00;
-    border-radius: 30px;
-    background-color: #00000000;
+   padding:30px;
+   margin:10px;
+
+  border-width:7px;
   }
 
   .connected-wallet {
@@ -176,9 +176,7 @@ font-size:18px;}
     margin-bottom: 10px;
   }
 
-  .center2-container {
-    margin-top: 10px;
-  }
+  
 
   .button-container {
     display: flex;
@@ -192,6 +190,7 @@ font-size:18px;}
   }
 
   .info-container {
-    margin-top: 30px; /* Add margin-top for mobile version */
+    margin: 20px 50px 0px 50px;
+   
   } 
 } 
