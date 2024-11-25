@@ -53,7 +53,7 @@
     width: 100%;
     max-width: 300px;
 }
-h2{margin-top:20px;}
+
 /* Hover effect for buttons */
 
 .wallet-button:hover, .cancel-button:hover, .disconnect-button:hover {

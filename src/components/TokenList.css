@@ -12,8 +12,7 @@
 }
 
 .subtitletokens {
-    margin-top: 0px;
-    margin-bottom: 20px;
+  
     text-align: center; /* Center the subtitle text horizontally */
     font-size:18px;
     font-family: 'Luciole', sans-serif; 
@@ -47,7 +46,7 @@
 
 .subtitletokens {
     margin-top: 0px;
-    margin-bottom: 30px;
+   
     text-align: center; /* Center the subtitle text horizontally */
    
 }
@@ -82,7 +81,7 @@
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-    margin-top: 10px;
+   
     transition: background-color 0.3s ease;
 }
 

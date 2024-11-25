@@ -19,7 +19,7 @@ function HomePage() {
 
         <h1 className="titlehome">
           Trade, launch and earn.
-          <br />
+         
         </h1>
         <h4 className="subtitlehome">
           Earn trading, launching tokens, staking and achieving milestones.
