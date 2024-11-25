@@ -18,8 +18,8 @@ body {
 }
 
 .factory-container {
-    background: #1D00AA;
-    border: 10px solid #00000023;    
+    background: #000000;
+    border: 10px solid #ffffff65;    
     
     
     border-radius: 40px; /* Increased border radius for more rounded corners */
@@ -87,7 +87,7 @@ body {
     border-radius: 360px; /* More pronounced rounded corners */
     color: #ffffff;
     text-align: left; /* Align text to the left */
-    border: 0px solid #ffffff4c; /* Add a solid white border */
+    border: 8px solid #ffffff4c; /* Add a solid white border */
     transition: border-color 0.3s; /* Smooth transition for border color */
     font-family: 'Technoma', sans-serif;
     font-size:22px;
@@ -95,7 +95,7 @@ body {
 }
 
 .custom-file-input:hover {
-    background: rgba(255, 255, 255, 0.3); /* Change border color on hover */
+    border: 8px solid #ffffff7f;  /* Change border color on hover */
 }
 
 .custom-file-input span {

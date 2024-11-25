@@ -372,9 +372,9 @@ const removeCommas = (value) => {
                     src={image_placeholder}
                     alt="Placeholder"
                     style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
+                      width: "120px",
+                      height: "120px",
+                      borderRadius: "100%",
                       objectFit: "cover",
                     }}
                   />

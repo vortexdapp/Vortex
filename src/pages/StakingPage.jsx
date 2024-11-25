@@ -552,69 +552,71 @@ const StakingPage = () => {
         </h5>
       </div>
       <div className="staking-container">
-        {/* Staking container in the center */}
-        
-        {isConnected ? (
-          <>
-            <div>
-              <div>
-                <h4 className="apy-title">APY: {apy}</h4>
-              </div>
-              {pendingUnstake > 0n && (
-                <p>
-                  Pending amount unstaking:{" "}
-                  {ethers.formatEther(pendingUnstake.toString())} ETH
-                </p>
-              )}
-              <p>{stakedMessage}</p>
-              <input
-                type="number"
-                className="input"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Enter amount (ETH)"
-              />
-              <div>
-                <button
-                  className="stake-button"
-                  onClick={handleStake}
-                  disabled={loadingStake || loadingUnstake}
-                >
-                  {loadingStake ? "Staking..." : "Stake"}
-                </button>
-                {isStaked && canUnstake && (
-                  <button
-                    className="unstake-button"
-                    onClick={handleUnstake}
-                    disabled={
-                      loadingStake ||
-                      loadingUnstake ||
-                      !canUnstake ||
-                      calculateMaxUnstakable(stakedAmount, pendingUnstake) <= 0n
-                    }
-                  >
-                    {loadingUnstake ? "Unstaking..." : "Unstake"}
-                  </button>
-                )}
-              </div>
+  {isConnected ? (
+    <>
+      <div>
+        <div>
+          <h4 className="apy-title">APY: {apy}</h4>
+        </div>
+        {pendingUnstake > 0n && (
+          <p>
+            Pending amount unstaking:{" "}
+            {ethers.formatEther(pendingUnstake.toString())} ETH
+          </p>
+        )}
+        <p>{stakedMessage}</p>
+        <input
+          type="number"
+          className="input"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Enter amount (ETH)"
+        />
+        {/* Stake Button */}
+        <button
+          className="stake-button"
+          onClick={handleStake}
+          disabled={loadingStake || loadingUnstake}
+        >
+          {loadingStake ? "Staking..." : "Stake"}
+        </button>
+      </div>
 
-              {isStaked && (
-                <button
-                  className="unstake-button"
-                  onClick={handleClaimRewards}
-                  disabled={loadingClaim}
-                >
-                  {loadingClaim ? "Claiming..." : "Claim"}
-                </button>
-              )}
-
-              {errorMessage && <p className="error-message">{errorMessage}</p>}
-            </div>
-          </>
-        ) : (
-          <p>Please connect your wallet using the button in the header.</p>
+      <div className="bottom-buttons">
+        {/* Unstake Button */}
+        {isStaked && canUnstake && (
+          <button
+            className="unstake-button"
+            onClick={handleUnstake}
+            disabled={
+              loadingStake ||
+              loadingUnstake ||
+              !canUnstake ||
+              calculateMaxUnstakable(stakedAmount, pendingUnstake) <= 0n
+            }
+          >
+            {loadingUnstake ? "Unstaking..." : "Unstake"}
+          </button>
+        )}
+        {/* Claim Rewards Button */}
+        {isStaked && (
+          <button
+            className="claim-button"
+            onClick={handleClaimRewards}
+            disabled={loadingClaim}
+          >
+            {loadingClaim ? "Claiming..." : "Claim"}
+          </button>
         )}
       </div>
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    </>
+  ) : (
+    <p>Please connect your wallet using the button in the header.</p>
+  )}
+</div>
+
       <div className="info-container">
         {/* Info container below the staking container */}
         <div className="stats-row">

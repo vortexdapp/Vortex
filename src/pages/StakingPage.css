@@ -1,3 +1,69 @@
+/* Stake Button */
+.stake-button {
+  margin: 10px 0; /* Spacing around the button */
+  font-size: 22px; /* Larger font size */
+  padding: 15px 30px; /* More padding for a larger button */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #1ec7de; /* Keep the original color */
+  color: white; /* Text color */
+  font-weight: 400px; /* Make text bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s ease; /* Transition effect */
+}
+
+.stake-button:hover {
+  background-color: #ffffff; /* Change background color on hover */
+  color: #1ec7de; /* Text color matches the original button background */
+}
+
+/* Unstake Button */
+.unstake-button {
+  margin: 5px; /* Adjust spacing */
+  font-size: 18px; /* Slightly smaller font than stake button */
+  padding: 10px 20px; /* Adjust padding */
+  border-radius: 6px; /* Rounded corners */
+  background-color: #4D0AA7; /* Custom color for Unstake button */
+  color: white; /* Text color */
+  font-weight: 400px; /* Make text bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s ease; /* Transition effect */
+}
+
+.unstake-button:hover {
+  background-color: #ffffff; /* Change background color on hover */
+  color: #4D0AA7; /* Text color matches the original button background */
+}
+
+/* Claim Button */
+.claim-button {
+  margin: 5px; /* Adjust spacing */
+  font-size: 18px; /* Slightly smaller font than stake button */
+  padding: 10px 20px; /* Adjust padding */
+  border-radius: 6px; /* Rounded corners */
+  background-color: #EF10FFE1; /* Custom color for Claim button */
+  color: white; /* Text color */
+  font-weight: 400px; /* Make text bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.2s ease; /* Transition effect */
+}
+
+.claim-button:hover {
+  background-color: #ffffff; /* Change background color on hover */
+  color: #EF10FFE1; /* Text color matches the original button background */
+}
+
+/* Bottom Buttons Container */
+.bottom-buttons {
+  display: flex;
+  justify-content: space-between; /* Space out buttons horizontally */
+  margin-top: 20px; /* Add spacing from the input field */
+  width: 100%; /* Ensure the buttons span the full width */
+}
+
+.bottom-buttons button {
+  flex: 1; /* Ensure buttons take equal space */
+  margin: 0 5px; /* Add spacing between buttons */
+}
 
 
 .texthome2 {
@@ -10,30 +76,42 @@
 
 .staking-container {
 
-  background: linear-gradient(135deg, #000000, #073b62, #bd41d6);
-    
+  background: #000000;
+  border: 10px solid #ffffff65;    
   border-radius: 40px; /* Increased border radius for more rounded corners */
 
   padding: 20px 30px 20px 30px;
-  border:0px;
+
   width: 100%;
   max-width: 500px;
   text-align: center;
   transition: transform 0.3s;
   margin-top: 10px; /* Add margin to separate from subtitle */
   max-width: 600px;
+  margin: 50px auto; /* Center horizontally */  
 
-  padding: 20px; /* Reduced padding */
-  margin: 50px auto; /* Center horizontally */
-  
-  border-radius: 30px;
-  background-color: #0000006c;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertically center */
   align-items: center; /* Horizontally center */
-  text-align: center;
+  
+}
+
+.staking-container .bottom-buttons {
+  display: flex;
+  justify-content: space-between; /* Space out buttons horizontally */
+  margin-top: 20px; /* Add spacing from the input field */
+  width: 100%; /* Ensure the buttons span the full width */
+}
+
+.staking-container .bottom-buttons button {
+  flex: 1; /* Ensure buttons take equal space */
+  margin: 0 5px; /* Add spacing between buttons */
+  display: flex;
+  justify-content: center; /* Center the group of buttons */
+  gap: 0 px; /* Space between buttons */
+  width: 100%; /* Ensure buttons take up full width for alignment */
 }
 
 
@@ -114,12 +192,12 @@
 }
 
 
-.stake-button,
-.unstake-button {
-  margin-top:10px;
+.stake-button{
+  margin:5px 10px 5px 10px;
+
   font-size: 20px; /* Adjust font size if needed */
   border-radius: 6px; /* Keep existing border radius */
-  background-color: #6c42a4; /* Example background color */
+  background-color: #1ec7de; /* Example background color */
   color: white; /* Text color */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.2s ease; /* Transition effect */
