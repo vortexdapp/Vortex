@@ -2,7 +2,7 @@
 
 /* Desktop and tablet */
 .token-list-mobile {
-    display: none; /* Hide on desktop and tablet */
+    display: flex; /* Hide on desktop and tablet */
   }
   
   /* Mobile devices */
