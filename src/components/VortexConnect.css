@@ -46,7 +46,7 @@
     color: #000000;
     padding: 8px 16px;
     margin: 5px;
-    font-size: 16px;
+    font-size: 18px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -109,4 +109,18 @@
     margin-right: 8px; /* Space between the icon and text */
     vertical-align: middle; /* Align icon vertically with text */
     display: inline-block; /* Ensure the icon is treated as an inline element */
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .connect-button {
+        padding: 8px 12px; /* Reduce padding */
+        font-size: 16px; /* Smaller font size */
+        max-width: 200px; /* Limit width */
+        margin: 0 auto; /* Center the button horizontally */
+        display: block; /* Ensure it takes its space */
+    }
+
+    .modal-content{margin:20px;}
 }

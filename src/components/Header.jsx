@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import VortexConnect from "./VortexConnect"; // Import VortexConnect
+import VortexConnect from "./VortexConnect";
 
 const Header = ({ onWalletConnect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Toggle menu state
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -26,10 +26,7 @@ const Header = ({ onWalletConnect }) => {
 
         {/* Burger Menu */}
         <div className="div-burger">
-          <button
-            className="burger-menu"
-            onClick={toggleMenu} // Add toggle functionality
-          >
+          <button className="burger-menu" onClick={toggleMenu}>
             &#9776;
           </button>
           <nav className={`menu ${isMenuOpen ? "open" : ""}`}>

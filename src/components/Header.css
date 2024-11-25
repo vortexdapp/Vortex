@@ -1,127 +1,111 @@
+/* General Header Styling */
 .header {
   background-color: #00000000;
-  padding: 11px 20px; /* Add padding for left and right spacing */
+  padding: 11px 20px;
   color: white;
   display: flex;
-  justify-content: space-between; /* Space between logo and button */
+  justify-content: space-between;
   align-items: center;
-  width: 100%; /* Ensure header takes full width */
-  max-width: 100%; /* Remove fixed width to avoid overflow */
-  margin: 0 auto; /* Center the header horizontally */
-  box-sizing: border-box; /* Include padding in width calculation */
-  overflow: hidden; /* Prevent any child elements from overflowing */
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .logo {
-  width: 80px; /* Adjust the width according to your preference */
-  height: auto; /* Maintain aspect ratio */
+  width: 80px;
+  height: auto;
 }
 
 .header-content {
-  padding: 10px 0; /* Adjust padding for header content */
-  max-width: 100%; /* Ensure content does not exceed viewport width */
-  margin: 0 auto; /* Center the content horizontally */
   display: flex;
-  justify-content: space-between; /* Space between logo and button */
+  justify-content: space-between;
   align-items: center;
-  width: 100%; /* Ensure header content takes full width */
-  box-sizing: border-box; /* Prevent padding from causing overflow */
+  width: 100%;
+  padding: 10px 0;
 }
 
+.div-logo,
+.div-burger,
 .div-button {
-  margin-right: 20px; /* Add margin to move the button away from the edge */
-}
-
-.menu {
-  display: flex; /* Horizontal menu on desktop */
-  gap: 20px; /* Space between links */
-  overflow: hidden; /* Prevent links from overflowing */
-}
-
-.menu a {
-  text-decoration: none;
-  color: #ffffff; /* Adjust color as needed */
-  font-weight: 500;
-  font-family: 'Technoma', sans-serif; /* Use Technoma font */
-  font-size: 21px; /* Set font size to 21px */
-}
-
-.menu a:hover {
-  color: #a333ff; /* Change to your desired hover color */
+  flex: 1;
+  max-width: 33%; /* Each section takes up 33% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .burger-menu {
-  display: none; /* Hide burger menu on desktop */
+  display: none; /* Hidden by default */
   font-size: 24px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* Prevent horizontal overflow on smaller screens */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-family: "Technoma", sans-serif;
+  font-size: 21px;
+}
+
+.menu a:hover {
+  color: #a333ff;
+}
+
+/* Mobile Styling */
 @media only screen and (max-width: 600px) {
-  .header {
-    padding: 10px; /* Adjust padding for mobile */
+  .burger-menu {
+    display: block; /* Show burger menu on mobile */
+    font-size: 30px;
+    cursor: pointer;
   }
 
-  .logo {
-    width: 70px; /* Adjust the width for smaller screens */
-  }
-
-  .div-button {
-    margin-right: 10px; /* Adjust for smaller screens */
-    flex-grow: 0; /* Prevent the button div from growing */
-    text-align: center; /* Center the button */
-  }
-
-  .div-logo, .div-burger {
-    max-width: 33%; /* Each div takes 33% of the width */
-  }
-
-  /* Ensure each column occupies 33% of the screen width */
-  .header-content > * {
-    text-align: center; /* Center content within each column */
-  }
+  .burger-menu:hover{background-color: black; color:white;}
 
   .menu {
+    display: none; /* Hide menu links by default */
     flex-direction: column; /* Stack links vertically */
     position: absolute;
+    top: 100px; /* Adjust based on header height */
     right: 0;
-    top: 60px; /* Adjust based on header height */
-    background-color: rgba(0, 0, 0, 0.436); /* Adjust color as needed */
+    background-color: rgb(0, 0, 0);
     width: 100%;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
+    z-index: 1000; 
   }
 
   .menu.open {
-    display: flex; /* Show menu when burger is clicked */
+    display: flex; /* Show menu when the burger menu is toggled */
   }
 
   .menu a {
-    font-size: 18px; /* Slightly smaller font for mobile */
+    font-size: 30px;
+    margin: 10px 0;
+    color: #ffffff; /* Default font color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Add padding for better touch interaction */
+    display: block; /* Ensure each link takes full width */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover transitions */
   }
+
+  .menu a:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #000000; /* Black font color on hover */
+    border-radius: 5px; /* Optional: Rounded corners for better aesthetics */
+  }
+
+
+ 
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .burger-menu {
-    display: block; /* Show burger menu on mobile */
-    margin-top: 0px;
-  }
-
-  .menu {
-    display: none; /* Hide horizontal menu on mobile */
-  }
-
-  .menu.open {
-    display: flex; /* Show menu when burger is clicked */
-  }
-}
-
-.connected-chain {
-  color: white;
-  margin-top: 10px;
-  font-size: 12px;
-  text-align: center;
-}
