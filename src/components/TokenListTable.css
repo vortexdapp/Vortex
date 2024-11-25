@@ -127,9 +127,9 @@ input[type="text"],
 input[type="number"] {
     width: 100%;
     padding: 15px;
-    font-size: 22px;
+    font-size: 20px;
     border-radius: 10px;
-    color:white;
+    color:rgb(0, 0, 0);
     box-sizing: border-box;
     text-align: center;
     font-family: 'Technoma', sans-serif; /* Use Technoma font */
@@ -179,7 +179,7 @@ h3 {
     border-radius: 30px;
     font-size: 16px;
     margin-bottom: 20px;
-    color: white; 
+    color: rgb(0, 0, 0); 
 }
 
 .custom-file-input input[type="file"] {

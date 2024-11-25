@@ -59,30 +59,29 @@ body {
     padding: 6px; /* Reduced padding for a more compact look */
     margin: 5px 0; /* Keep vertical margin */
     border-radius: 6px; /* 6px border radius */
-    background: #ffffff; /* Slightly transparent background */
-   color:#000000;
+    background: #ffffff; /* White background */
+    color: #000000; /* Black text */
     border: none; /* Remove border color */
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 .input::placeholder {
-    color: #000000; /* Set placeholder text color to white */
+    color: #000000; /* Placeholder color set to black */
     opacity: 1; /* Optional: Adjust opacity for better visibility */
 }
 
 .input:focus {
-    background:#ffffffe1; /* Change background on focus */
-    outline: none;
-    color:rgb(0, 0, 0);
-}   
-
-
+    background: #ffffff; /* Keep the background white */
+    outline: none; /* Remove focus outline */
+    color: #000000; /* Ensure text remains black on focus */
+}
 
 .input:hover {
-    background: #ffffffd9; /* Change background on focus */
+    background: #ffffff; /* Ensure background remains white on hover */
     outline: none;
-    color:white,
+    color: #000000; /* Keep text color black */
 }
+
 
 .custom-file-input {
     margin: 6px 0px 0px 0px; /* Increased margin for more space */
@@ -106,7 +105,7 @@ body {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
 }
 
 
@@ -177,7 +176,7 @@ body {
   padding: 10px; /* Increased padding for better appearance */
   text-align: center;
   margin-top: 10px;
-  font-size: 22px;
+  font-size: 20px;
   color: #ffffff;
   transition: background-color 0.3s; /* Smooth transition for hover effect */
 }

@@ -36,19 +36,19 @@
   padding: 8px;
   font-size: 16px;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.466);
-  color: #ffffff;
+  background: rgb(255, 255, 255);
+  color: #000000;
   width: 80%;
   outline: none;
 }
 
 .stake-form input::placeholder {
-  color: #aaaaaa;
+  color: #000000;
 }
 
 .stake-form input:focus {
   border-color: #555;
-  background-color: #2a2a2a;
+  background-color: #ffffffb4;
 }
 
 .button-group {
