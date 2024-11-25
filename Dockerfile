@@ -1,16 +1,17 @@
 # Build stage
 FROM node:18-alpine as build
 
-# Set working directory
 WORKDIR /app
 
 # Install dependencies
-COPY package.json yarn.lock ./
-RUN yarn install
+COPY package.json package-lock.json ./
+RUN npm install
 
-# Copy and build the app
+# Copy the project files
 COPY . .
-RUN yarn build
+
+# Build the React app
+RUN npm run build
 
 # Serve stage
 FROM nginx:alpine
@@ -18,11 +19,8 @@ FROM nginx:alpine
 # Copy the React build to Nginx
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy a custom Nginx config (optional)
+# Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose the Nginx port
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
