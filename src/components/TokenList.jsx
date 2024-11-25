@@ -1,8 +1,6 @@
-// src/components/TokensList.js
-
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient"; // Import the Supabase client
-import { FaTwitter, FaTelegram, FaGlobe } from "react-icons/fa"; // Adjusted icons import
+import { FaTwitter, FaTelegramPlane, FaGlobe } from "react-icons/fa"; // Correct icons
 import "./TokenList.css";
 
 function TokensList({ limit }) {
@@ -61,41 +59,109 @@ function TokensList({ limit }) {
       <h5 className="subtitletokens">Trade them directly on Uniswap</h5>
       <div className="tokens-grid">
         {displayedTokens.map((token) => (
-          <div key={token.address} className="token-card">
-            {token.imageUrl && (
-              <img
-                src={token.imageUrl}
-                alt={token.name}
-                className="token-image"
-              />
-            )}
-            <div className="token-info">
-              <h2 className="token-title">
-                {token.name} ({token.symbol})
-              </h2>
-              <h4 className="token-deployer">
-                Contract Address: {token.address}
-              </h4>
-              <h4 className="token-deployer">Chain: {token.chain}</h4>
-              <div className="social-links">
+          <div
+            key={token.address}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              backgroundColor: "#1D1D1D",
+              borderRadius: "10px",
+              padding: "20px",
+              color: "#ffffff",
+              maxWidth: "600px",
+              margin: "20px auto",
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            {/* Left Section - Logo */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {token.imageUrl && (
+                <img
+                  src={token.imageUrl}
+                  alt={token.name}
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    borderRadius: "50%",
+                    marginBottom: "10px",
+                  }}
+                />
+              )}
+            </div>
+
+            {/* Right Section - Name, Contract Address, and Socials */}
+            <div
+              style={{
+                flex: 1,
+                marginLeft: "20px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              {/* Token Name */}
+              <h1 style={{ margin: 0, fontSize: "24px" }}>
+                {token.name ? token.name : "Loading..."}
+              </h1>
+
+              {/* Contract Address */}
+              {token.address && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginTop: "10px",
+                    fontSize: "14px",
+                    color: "#aaaaaa",
+                  }}
+                >
+                  <p style={{ margin: 0 }}>
+                    Contract Address: {token.address.slice(0, 6)}...
+                    {token.address.slice(-4)}
+                  </p>
+                  <button
+                    onClick={() => navigator.clipboard.writeText(token.address)}
+                    style={{
+                      background: "none",
+                      border: "1px solid #aaaaaa",
+                      borderRadius: "4px",
+                      marginLeft: "10px",
+                      color: "#aaaaaa",
+                      cursor: "pointer",
+                      padding: "2px 6px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Copy
+                  </button>
+                </div>
+              )}
+
+              {/* Social Links */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "10px",
+                  gap: "10px",
+                }}
+              >
                 {token.website && (
                   <a
                     href={`https://${token.website}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="icon-link2"
+                    style={{ textDecoration: "none" }}
                   >
-                    <FaGlobe className="icon2" />
-                  </a>
-                )}
-                {token.twitter && (
-                  <a
-                    href={`https://${token.twitter}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="icon-link2"
-                  >
-                    <FaTwitter className="icon2" />
+                    <FaGlobe size={20} color="#ffffff" />
                   </a>
                 )}
                 {token.telegram && (
@@ -103,20 +169,22 @@ function TokensList({ limit }) {
                     href={`https://${token.telegram}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="icon-link2"
+                    style={{ textDecoration: "none" }}
                   >
-                    <FaTelegram className="icon2" />
+                    <FaTelegramPlane size={20} color="#ffffff" />
+                  </a>
+                )}
+                {token.twitter && (
+                  <a
+                    href={`https://${token.twitter}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FaTwitter size={20} color="#ffffff" />
                   </a>
                 )}
               </div>
-              <button
-                className="trade-button"
-                onClick={() =>
-                  (window.location.href = `/trading/${token.chain}/${token.address}`)
-                }
-              >
-                Trade
-              </button>
             </div>
           </div>
         ))}

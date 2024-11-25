@@ -34,6 +34,7 @@ const Header = ({ onWalletConnect }) => {
             <Link to="/factory">Launch</Link>
             <Link to="/staking">Stake</Link>
             <Link to="/tokens">Trade</Link>
+            <Link to="/dashboard">Dashboard</Link>
             <a
               href="https://docs.vortexdapp.com"
               target="_blank"

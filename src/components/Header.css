@@ -1,53 +1,48 @@
 /* General Header Styling */
 .header {
-  background-color: #00000000;
-  padding: 11px 20px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
+  background-color: transparent; /* Transparent background */
+  width: 100%; /* Full width */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
   box-sizing: border-box;
-  overflow: hidden;
-}
-
-.logo {
-  width: 80px;
-  height: auto;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between logo and connect button */
   align-items: center;
-  width: 100%;
-  padding: 10px 0;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Limit content width for desktop */
+  margin: 0 auto; /* Center content */
+  padding: 10px 20px; /* Add padding for spacing */
+  box-sizing: border-box;
 }
 
-.div-logo,
-.div-burger,
+.logo {
+  width: 80px; /* Adjust as needed */
+  height: auto;
+}
+
+.div-logo{display: flex;
+  justify-content: left;
+  align-items: left;
+  text-align: left;}
 .div-button {
-  flex: 1;
-  max-width: 33%; /* Each section takes up 33% */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: right;
+  align-items: right;
+  text-align: right;
 }
 
-.burger-menu {
-  display: none; /* Hidden by default */
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Hide burger menu on desktop */
+.div-burger {
+  display: flex;
 }
 
+/* Menu Styling */
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Space between menu items */
 }
 
 .menu a {
@@ -59,30 +54,81 @@
 }
 
 .menu a:hover {
-  color: #a333ff;
+  color: #EF10FFE1; /* Hover color */
+}
+
+/* Burger Menu Styling */
+.burger-menu {
+  display: none; /* Hidden on desktop */
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white; /* Ensure it's visible */
+}
+
+.burger-menu:hover,
+.burger-menu:focus,
+.burger-menu:active {
+  background-color: transparent; /* Remove hover background */
+  color: white; /* Maintain color */
+  outline: none; /* Remove outline */
 }
 
 /* Mobile Styling */
 @media only screen and (max-width: 600px) {
-  .burger-menu {
-    display: block; /* Show burger menu on mobile */
-    font-size: 30px;
-    cursor: pointer;
+  .header-content {
+    position: relative; /* Ensure menu can be positioned absolutely */
   }
 
-  .burger-menu:hover{background-color: black; color:white;}
+  /* Display all three sections equally on mobile */
+  .div-logo,
+  .div-burger,
+  .div-button {
+    flex: 1; /* Each section takes up equal space */
+    max-width: 33%; /* 33% width */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center;
+  }
 
+  /* Show burger menu on mobile */
+  .div-burger {
+    display: flex;
+  }
+
+  .burger-menu {
+    display: block; /* Make it visible */
+    font-size: 30px;
+    cursor: pointer;
+    color: white; /* Ensure visibility */
+    background: none;
+    border: none;
+    outline: none;
+  }
+
+  /* Remove any unwanted background on hover/focus */
+  .burger-menu:hover,
+  .burger-menu:focus,
+  .burger-menu:active {
+    background-color: transparent;
+    color: white;
+  }
+
+  /* Menu Styling */
   .menu {
     display: none; /* Hide menu links by default */
     flex-direction: column; /* Stack links vertically */
-    position: absolute;
-    top: 100px; /* Adjust based on header height */
-    right: 0;
-    background-color: rgb(0, 0, 0);
+    position: fixed; /* Stay on top */
+    top: 60px; /* Adjust based on header height */
+    left: 0; /* Start from left */
+    background-color: rgb(0, 0, 0); /* Background for the menu */
     width: 100%;
     text-align: center;
     padding: 20px 0;
-    z-index: 1000; 
+    z-index: 1000; /* High z-index to stay in front */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Shadow for emphasis */
   }
 
   .menu.open {
@@ -104,8 +150,4 @@
     color: #000000; /* Black font color on hover */
     border-radius: 5px; /* Optional: Rounded corners for better aesthetics */
   }
-
-
- 
 }
-
