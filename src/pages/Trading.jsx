@@ -115,7 +115,29 @@ function Trading() {
           handleWalletConnect({ signer, provider });
         }}
       />
-      <div style={{ textAlign: "center", marginTop: "20px", color: "#ffffff" }}>
+      <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        backgroundColor: "#1D1D1D",
+        borderRadius: "10px",
+        padding: "20px",
+        color: "#ffffff",
+        maxWidth: "600px",
+        margin: "20px auto",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+      }}
+    >
+      {/* Left Section - Logo */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {imageUrl && (
           <img
             src={imageUrl}
@@ -128,36 +150,45 @@ function Trading() {
             }}
           />
         )}
-        <h1>{tokenName ? `${tokenName}` : "Loading..."}</h1>
+      </div>
+
+      {/* Right Section - Name, Contract Address, and Socials */}
+      <div
+        style={{
+          flex: 1,
+          marginLeft: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Token Name */}
+        <h1 style={{ margin: 0, fontSize: "24px" }}>
+          {tokenName ? tokenName : "Loading..."}
+        </h1>
+
+        {/* Contract Address */}
         {contractAddress && (
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
               alignItems: "center",
               marginTop: "10px",
+              fontSize: "14px",
+              color: "#aaaaaa",
             }}
           >
-            <p
-              style={{
-                fontSize: "14px",
-                color: "#aaaaaa",
-                marginRight: "10px",
-                marginTop: "-10px",
-              }}
-            >
+            <p style={{ margin: 0 }}>
               Contract Address: {contractAddress.slice(0, 6)}...
               {contractAddress.slice(-4)}
             </p>
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(contractAddress);
-              }}
+              onClick={() => navigator.clipboard.writeText(contractAddress)}
               style={{
                 background: "none",
                 border: "1px solid #aaaaaa",
                 borderRadius: "4px",
-                marginTop: "-10px",
+                marginLeft: "10px",
                 color: "#aaaaaa",
                 cursor: "pointer",
                 padding: "2px 6px",
@@ -169,11 +200,13 @@ function Trading() {
           </div>
         )}
 
+        {/* Social Links */}
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
-            color: "#ffffff",
+            alignItems: "center",
+            marginTop: "10px",
+            gap: "10px",
           }}
         >
           {website && (
@@ -181,6 +214,7 @@ function Trading() {
               href={website.startsWith("http") ? website : `http://${website}`}
               target="_blank"
               rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
             >
               <FaGlobe size={20} color="#ffffff" />
             </a>
@@ -192,6 +226,7 @@ function Trading() {
               }
               target="_blank"
               rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
             >
               <FaTelegramPlane size={20} color="#ffffff" />
             </a>
@@ -201,12 +236,14 @@ function Trading() {
               href={twitter.startsWith("http") ? twitter : `https://${twitter}`}
               target="_blank"
               rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
             >
               <FaTwitter size={20} color="#ffffff" />
             </a>
           )}
         </div>
       </div>
+    </div>
 
       <div style={{ padding: "20px", textAlign: "center" }}>
         <form onSubmit={handleSearchSubmit}>
