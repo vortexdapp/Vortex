@@ -9,7 +9,6 @@ import TokensPage from "./pages/TokenListPage";
 import VortexConnectPage from "./pages/VortexConnectPage";
 import Trading from "./pages/Trading";
 import { VortexConnectProvider } from "./VortexConnectContext"; // Import context provider
-import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import LaunchToken from "./pages/LaunchToken";
 import TokenManagement from "./pages/TokenManagement";
