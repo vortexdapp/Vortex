@@ -29,14 +29,13 @@ body {
   font-size: 2.5rem;
   color: #f8f8f8; /* Vivid blue for branding */
   margin: 0;
-  margin-bottom: 10px;
+
 }
 
 .subtitlehome {
   font-size: 1rem;
   color: #d5d5d5;
-  margin-top: 10px;
-  margin-bottom: 30px;
+ 
 }
 
 .home-button {

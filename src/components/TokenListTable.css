@@ -179,7 +179,7 @@ h3 {
     border-radius: 30px;
     font-size: 16px;
     margin-bottom: 20px;
-    color: white; /* Set custom file input text to white */
+    color: white; 
 }
 
 .custom-file-input input[type="file"] {

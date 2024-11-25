@@ -71,11 +71,15 @@
 .titlehome {
   font-size: 75px;
   font-weight: 400;
+  margin-bottom:0px;
+  margin-top:0px;
 }
 
 .subtitlehome {
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
+  margin-top:0px;
+  margin-bottom:20px;
   color: white;
   opacity: 0;
   transform: translateY(20px);
