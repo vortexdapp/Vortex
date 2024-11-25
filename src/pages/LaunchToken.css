@@ -19,8 +19,8 @@ body {
 
 .factory-container {
     background: #1D00AA;
-    border: 0px;
-
+    border: 10px solid #00000023;    
+    
     
     border-radius: 40px; /* Increased border radius for more rounded corners */
   
@@ -67,10 +67,15 @@ body {
 
 .input::placeholder {
     color: #fff; /* Set placeholder text color to white */
-    opacity: 0.7; /* Optional: Adjust opacity for better visibility */
+    opacity: 1; /* Optional: Adjust opacity for better visibility */
 }
 
 .input:focus {
+    background: rgba(255, 255, 255, 0.3); /* Change background on focus */
+    outline: none;
+}
+
+.input:hover {
     background: rgba(255, 255, 255, 0.3); /* Change background on focus */
     outline: none;
 }
@@ -90,7 +95,7 @@ body {
 }
 
 .custom-file-input:hover {
-    border-color: #bd41d6; /* Change border color on hover */
+    background: rgba(255, 255, 255, 0.3); /* Change border color on hover */
 }
 
 .custom-file-input span {
@@ -144,7 +149,8 @@ body {
 }
 
 .deploy-button:hover {
-    background-color: #ffffff; /* Optional: Darker shade on hover */
+    background-color:#EF10FFE1;/* Optional: Darker shade on hover */
+    color:white;
 }
 
 .input-container {
