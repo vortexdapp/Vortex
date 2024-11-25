@@ -75,7 +75,7 @@ const StakingPage = () => {
   const [pendingUnstake, setPendingUnstake] = useState(0n);
   const [canUnstake, setCanUnstake] = useState(true);
   const [loadingClaim, setLoadingClaim] = useState(false);
-  const [apy, setApy] = useState("Calculating...");
+  const [apy, setApy] = useState("APY");
   const [isInitialized, setIsInitialized] = useState(false);
   const [totalStaked, setTotalStaked] = useState("0.0000");
   const [totalRewards, setTotalRewards] = useState("0.0000");
@@ -556,23 +556,29 @@ const StakingPage = () => {
     <>
       <div>
         <div>
-          <h4 className="apy-title">APY: {apy}</h4>
+          <h4 className="apy-title">{apy}</h4>
+          <h4 className="apy-text">APY</h4>
         </div>
         {pendingUnstake > 0n && (
-          <p>
+          <p className="pending">
             Pending amount unstaking:{" "}
             {ethers.formatEther(pendingUnstake.toString())} ETH
           </p>
         )}
-        <p>{stakedMessage}</p>
+        <p className="staked-message">{stakedMessage}</p>
+        <div className="input-stake-container">
         <input
           type="number"
           className="input"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          placeholder="Enter amount (ETH)"
+          placeholder="Amount (ETH)"
         />
+
+</div>
         {/* Stake Button */}
+
+
         <button
           className="stake-button"
           onClick={handleStake}
@@ -613,19 +619,22 @@ const StakingPage = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>
   ) : (
-    <p>Please connect your wallet using the button in the header.</p>
+    <p>Please connect your wallet using the button in top right.</p>
   )}
 </div>
 
       <div className="info-container">
         {/* Info container below the staking container */}
         <div className="stats-row">
-          <div className="stat-item">
-            <strong>Total Staked:</strong> {totalStaked} ETH
-          </div>
-          <div className="stat-item">
-            <strong>Total Rewards:</strong> {totalRewards} ETH
-          </div>
+        <div className="stats-row">
+  <div className="stat-item">
+    <span className="stat-label">Total Staked:</span> {totalStaked} ETH
+  </div>
+  <div className="stat-item">
+    <span className="stat-label">Total Rewards:</span> {totalRewards} ETH
+  </div>
+</div>
+
         </div>
       </div>
       <Footer />
