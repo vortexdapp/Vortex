@@ -182,7 +182,7 @@ const removeCommas = (value) => {
       // Convert amounts to BigInt
       const amountIn = ethers.parseUnits(amountToBuy, 18); // amountIn from user input
       const launchPrice = ethers.parseUnits("0.00002", 18);
-      const liquidity_amount = ethers.parseUnits(liquidityAmount, 18);
+      const liquidity_amount = showLiquidity ? ethers.parseUnits(liquidityAmount, 18): 0n;
       console.log("amountIn:", amountIn);
       console.log("launchPrice:", launchPrice);
       console.log("liquidity_amount:", liquidity_amount);
