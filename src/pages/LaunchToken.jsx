@@ -424,7 +424,7 @@ const removeCommas = (value) => {
               {/* Amount to Buy ETH */}
               <input
                 type="number"
-                step="0.0001"
+                step="0.0000001"
                 value={amountToBuy}
                 onChange={(e) => setAmountToBuy(e.target.value)}
                 placeholder="Buy Tokens (ETH)"
@@ -432,6 +432,7 @@ const removeCommas = (value) => {
                 required
                 min="0"
                 max="0.0019"
+
               />
             </div>
 

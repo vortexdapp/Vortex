@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Added base href -->
+    <base href="/" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vortex</title>
@@ -11,7 +13,7 @@
     <meta
       property="twitter:description"
       content="Create a token and borrow liquidity. Vortex Dapp is a rev-sharing EVM token launcher and liquidity lender protocol."
-    />
+    />  
     <meta
       property="description"
       content="Launch your ERC20 token and get liquidity without code. Vortex Dapp is an EVM token launcher and liquidity lender platform."
@@ -41,6 +43,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Vite will replace this script during build -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
