@@ -48,13 +48,20 @@
   text-align: center;
 }
 
-.search-input {
-  width: 80%;
-  padding: 10px;
+
+.search-button {
+  padding: 10px 20px;
   border-radius: 10px;
-  color: #000000;
-  border: 1px solid #ccc;
-  margin-right: 10px;
+  background-color: #1D00AA;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.search-button:hover {
+  background-color: #EF10FFE1; /* Change background color on hover */
+  color:white;
 }
 
 .input2 {
@@ -68,14 +75,6 @@
   transition: background-color 0.3s;
 }
 
-.search-button {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
 
 .main-content {
   display: flex;

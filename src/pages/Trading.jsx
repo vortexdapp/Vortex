@@ -245,7 +245,7 @@ function Trading() {
       </div>
     </div>
 
-      <div style={{ padding: "20px", textAlign: "center" }}>
+      <div style={{ padding: "10px", textAlign: "center" }}>
         <form onSubmit={handleSearchSubmit}>
           <input
             className="input2"
@@ -254,7 +254,9 @@ function Trading() {
             onChange={handleSearchChange}
             placeholder="Enter token contract address"
             style={{
-              width: "80%",
+              width: "50%",
+              background:"white",
+              fontSize:"22px",
               padding: "10px",
               borderRadius: "10px",
               border: "1px solid #ccc",
@@ -263,14 +265,7 @@ function Trading() {
           />
           <button
             type="submit"
-            style={{
-              padding: "10px 20px",
-              borderRadius: "10px",
-              backgroundColor: "#333",
-              color: "#fff",
-              border: "none",
-              cursor: "pointer",
-            }}
+            className="search-button"
           >
             Search
           </button>
@@ -293,7 +288,7 @@ function Trading() {
           <div
             style={{
               position: "relative",
-              height: "660px",
+              height: "800px",
               minWidth: "300px",
             }}
           >
@@ -306,7 +301,7 @@ function Trading() {
                 style={{
                   position: "absolute",
                   width: "100%",
-                  height: "100%",
+                  height: "80%",
                   top: 0,
                   left: 0,
                   border: "0",

@@ -153,8 +153,8 @@ const StakingPage = () => {
       console.log("APY:", (apy * 100).toFixed(2) + "%");
     } catch (error) {
       console.error("Error calculating APY:", error);
-      setApy("Error calculating APY");
-      setErrorMessage("Failed to calculate APY.");
+      setApy("APY");
+    ;
     }
   };
 
@@ -240,9 +240,7 @@ const StakingPage = () => {
         }
       } catch (error) {
         console.error("Error checking staking status:", error);
-        setErrorMessage(
-          "An error occurred while checking staking status. Please try again."
-        );
+        
       }
     };
 
