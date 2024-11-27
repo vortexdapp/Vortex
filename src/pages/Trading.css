@@ -49,6 +49,21 @@
 }
 
 
+.container {
+  display: flex; /* Use flexbox to align children in a row */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space items evenly */
+}
+
+.token-container {
+  flex: 1; /* Allow it to grow */
+  margin-right: 10px; /* Optional: Add space between the two containers */
+}
+
+.search-container {
+  flex: 1; /* Allow it to grow */
+}
+
 .search-button {
   padding: 10px 20px;
   border-radius: 10px;

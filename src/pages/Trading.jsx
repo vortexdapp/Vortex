@@ -115,7 +115,9 @@ function Trading() {
           handleWalletConnect({ signer, provider });
         }}
       />
+      <div>
       <div
+      className="token-container"
       style={{
         display: "flex",
         alignItems: "center",
@@ -125,8 +127,8 @@ function Trading() {
         padding: "20px",
         color: "#ffffff",
         maxWidth: "600px",
-        margin: "20px auto",
-        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+        margin: "10px auto",
+      
       }}
     >
       {/* Left Section - Logo */}
@@ -143,10 +145,10 @@ function Trading() {
             src={imageUrl}
             alt={tokenName}
             style={{
-              width: "100px",
-              height: "100px",
+              width: "80px",
+              height: "80px",
               borderRadius: "50%",
-              marginBottom: "10px",
+              marginBottom: "6px",
             }}
           />
         )}
@@ -205,7 +207,7 @@ function Trading() {
           style={{
             display: "flex",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "05px",
             gap: "10px",
           }}
         >
@@ -216,7 +218,7 @@ function Trading() {
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
-              <FaGlobe size={20} color="#ffffff" />
+              <FaGlobe size={18} color="#ffffff" />
             </a>
           )}
           {telegram && (
@@ -228,7 +230,7 @@ function Trading() {
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
-              <FaTelegramPlane size={20} color="#ffffff" />
+              <FaTelegramPlane size={18} color="#ffffff" />
             </a>
           )}
           {twitter && (
@@ -238,14 +240,14 @@ function Trading() {
               rel="noopener noreferrer"
               style={{ textDecoration: "none" }}
             >
-              <FaTwitter size={20} color="#ffffff" />
+              <FaTwitter size={18} color="#ffffff" />
             </a>
           )}
         </div>
       </div>
     </div>
 
-      <div style={{ padding: "10px", textAlign: "center" }}>
+      <div className="search-container" style={{ padding: "10px", textAlign: "center" }}>
         <form onSubmit={handleSearchSubmit}>
           <input
             className="input2"
@@ -256,7 +258,7 @@ function Trading() {
             style={{
               width: "50%",
               background:"white",
-              fontSize:"22px",
+              fontSize:"20px",
               padding: "10px",
               borderRadius: "10px",
               border: "1px solid #ccc",
@@ -271,7 +273,7 @@ function Trading() {
           </button>
         </form>
       </div>
-
+</div>
       <div
         style={{
           display: "flex",
@@ -280,7 +282,7 @@ function Trading() {
           alignItems: "flex-start",
           margin: "0 auto",
           maxWidth: "1200px",
-          padding: "20px",
+          padding: "30px",
         }}
       >
         {/* Left Section (GeckoTerminal Embed with Pool Address) */}

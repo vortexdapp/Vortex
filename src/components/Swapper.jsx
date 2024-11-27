@@ -44,6 +44,7 @@ const Swapper = ({ tokenAddress }) => {
   const [signer, setSigner] = useState(null);
   const [provider, setProvider] = useState(null);
   const [chainId, setChainId] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Initialize signer, provider, and chainId
   useEffect(() => {
@@ -95,27 +96,26 @@ const Swapper = ({ tokenAddress }) => {
   const fetchBalances = async () => {
     if (!signer || !provider) return;
     try {
+      let formattedBalance = "0"; // Default value in case of error
       if (isEthToToken) {
         const ethBalance = await provider.getBalance(await signer.getAddress());
-        setBalance(ethers.formatEther(ethBalance));
+        formattedBalance = ethers.formatEther(ethBalance);
       } else {
-        const tokenContract = new ethers.Contract(
-          tokenAddress,
-          ERC20ABI,
-          signer
-        );
-        const tokenBalance = await tokenContract.balanceOf(
-          await signer.getAddress()
-        );
+        const tokenContract = new ethers.Contract(tokenAddress, ERC20ABI, signer);
+        const tokenBalance = await tokenContract.balanceOf(await signer.getAddress());
         const decimals = await tokenContract.decimals();
-        setBalance(ethers.formatUnits(tokenBalance, decimals));
+        formattedBalance = ethers.formatUnits(tokenBalance, decimals);
       }
+  
+      // Ensure the balance is displayed with 4 decimal places
+      setBalance(parseFloat(formattedBalance).toFixed(4));
     } catch (error) {
       console.error("Error fetching balances:", error);
       setBalance("0");
     }
   };
 
+  
   const approveToken = async (spender, amount) => {
     try {
       const tokenContract = new ethers.Contract(tokenAddress, ERC20ABI, signer);
@@ -130,7 +130,7 @@ const Swapper = ({ tokenAddress }) => {
 
   const executeSwap = async () => {
     if (!signer || !provider) {
-      alert("Wallet is not connected.");
+      setErrorMessage("Wallet is not connected.");
       return;
     }
 
@@ -139,7 +139,7 @@ const Swapper = ({ tokenAddress }) => {
 
     try {
       if (!inputAmount || isNaN(inputAmount) || Number(inputAmount) <= 0) {
-        alert("Please enter a valid amount.");
+        setErrorMessage("Please enter a valid amount.");
         setLoading(false);
         return;
       }
@@ -147,7 +147,7 @@ const Swapper = ({ tokenAddress }) => {
       const amountIn = ethers.parseUnits(inputAmount, 18); // Assuming 18 decimals
 
       if (!swapContractAddress) {
-        alert("Swap contract address is not configured.");
+        setErrorMessage("Swap contract address is not configured.");
         setLoading(false);
         return;
       }
@@ -173,13 +173,13 @@ const Swapper = ({ tokenAddress }) => {
           });
       await tx.wait();
       console.log("Swap completed successfully.");
-      alert("Swap successful!");
+      setErrorMessage("Swap successful!");
     } catch (error) {
       console.error("Swap error:", error);
       if (error.code === 4001) {
-        alert("Swap transaction was rejected by the user.");
+        setErrorMessage("Swap transaction was rejected by the user.");
       } else {
-        alert(`Swap failed: ${error.reason || error.message}`);
+        setErrorMessage(`Swap failed: ${error.reason || error.message}`);
       }
     } finally {
       setLoading(false);
@@ -192,7 +192,13 @@ const Swapper = ({ tokenAddress }) => {
 
   return (
     <div className="swap-container">
-      <h2>{isEthToToken ? "Swap ETH for Tokens" : "Swap Tokens for ETH"}</h2>
+
+<button className="switch-button" onClick={toggleSwapDirection} disabled={loading}>
+  ⇆
+</button>
+
+
+      <h2>{isEthToToken ? "Buy with ETH" : "Sell to ETH"}</h2>
 
       <div className="balance-display">
         <p>
@@ -203,7 +209,7 @@ const Swapper = ({ tokenAddress }) => {
       <div className="swap-input">
        
         <input
-          className="input"
+          className="input3"
           type="number"
           placeholder={`Enter ${isEthToToken ? "ETH" : "Token"} amount`}
           value={inputAmount}
@@ -211,9 +217,7 @@ const Swapper = ({ tokenAddress }) => {
         />
       </div>
 
-      <button onClick={toggleSwapDirection} disabled={loading}>
-        {isEthToToken ? "Switch to Token - ETH" : "Switch to ETH - Token"}
-      </button>
+      
 
       <button onClick={executeSwap} disabled={loading || !signer}>
         {loading ? "Swapping..." : "Swap"}
