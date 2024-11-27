@@ -9,6 +9,7 @@ function TokensList({ limit }) {
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("newest");
   const [selectedChain, setSelectedChain] = useState("all");
+  
 
   useEffect(() => {
     const fetchTokens = async () => {
@@ -104,7 +105,7 @@ function TokensList({ limit }) {
       
       {/* Filter and Sort Buttons */}
     
-      <div className="button-container">
+      <div className="button-container2">
     <button className="custom-button"
         onClick={() => sortTokens(sortOrder === "newest" ? "oldest" : "newest")}
     >
@@ -171,7 +172,7 @@ function TokensList({ limit }) {
     justifyContent: "space-between",
   }}
 >
-  <h1 style={{ margin: 0, fontSize: "18 px" }}>
+  <h1 className="token-title" style={{ margin: 0, fontSize: "18 px" }}>
     {token.name ? token.name : "Loading..."}
   </h1>
   {token.marketData ? (

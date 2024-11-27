@@ -102,7 +102,7 @@
 .token-title {
     margin: 10px 0 5px;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 26px;
 }
 
 .token-deployer {
@@ -125,7 +125,7 @@
     color: #fff; /* White text color for options */
 }
 
-.button-container {
+.button-container2 {
     display: flex; /* Aligns children in a row */
     align-items: center; /* Vertically centers the items */
     justify-content: center; /* Center the buttons horizontally */
