@@ -1,51 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient"; // Import the Supabase client
-import { FaTwitter, FaTelegramPlane, FaGlobe } from "react-icons/fa"; // Correct icons
+import { supabase } from "../supabaseClient";
+import { FaTwitter, FaTelegramPlane, FaGlobe } from "react-icons/fa";
 import axios from "axios";
 import "./TokenList.css";
 
 function TokensList({ limit }) {
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("newest");
+  const [selectedChain, setSelectedChain] = useState("all");
 
   useEffect(() => {
     const fetchTokens = async () => {
       try {
-        // Fetch tokens from Supabase
         const { data: tokensArray, error } = await supabase
           .from("tokens")
           .select("*");
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
 
-        // Map tokens and parse timestamp
-        const tokensWithParsedData = tokensArray.map((token) => {
-          return {
-            ...token,
-            timestamp: token.timestamp ? new Date(token.timestamp) : null,
-            marketData: null, // Placeholder for market data
-          };
-        });
+        const tokensWithParsedData = tokensArray.map((token) => ({
+          ...token,
+          timestamp: token.timestamp ? new Date(token.timestamp) : null,
+          marketData: null,
+        }));
 
-        // Sort tokens by timestamp in descending order (most recent first)
         const sortedTokens = tokensWithParsedData.sort(
           (a, b) => b.timestamp - a.timestamp
         );
 
-        // Fetch market data for each token
         const tokensWithMarketData = await Promise.all(
           sortedTokens.map(async (token) => {
             try {
-              // Replace this with the actual API endpoint and parameters
-              // For example, using CoinGecko's API:
               const response = await axios.get(
                 `https://api.coingecko.com/api/v3/coins/sepolia-testnet/contract/${token.address}`
               );
-
               const marketData = response.data.market_data;
-
               return {
                 ...token,
                 marketData: {
@@ -59,7 +49,7 @@ function TokensList({ limit }) {
                 `Error fetching market data for token ${token.address}:`,
                 error
               );
-              return token; // Return token without marketData
+              return token;
             }
           })
         );
@@ -75,20 +65,64 @@ function TokensList({ limit }) {
     fetchTokens();
   }, []);
 
+  const sortTokens = (order) => {
+    const sorted = [...tokens].sort((a, b) => {
+      if (order === "newest") return b.timestamp - a.timestamp;
+      return a.timestamp - b.timestamp;
+    });
+    setSortOrder(order);
+    setTokens(sorted);
+  };
+
+  const filterByChain = (chain) => {
+    setSelectedChain(chain);
+  };
+
   if (loading)
     return (
       <div className="loading-container">
-        <p>Loading tokens...</p>
-      </div>
-    );
+    <p className="loading-message">Loading tokens...</p>
+</div>);
+
   if (!tokens.length) return <p>No tokens found.</p>;
 
-  const displayedTokens = limit ? tokens.slice(0, limit) : tokens;
+  const filteredTokens =
+    selectedChain === "all"
+      ? tokens
+      : tokens.filter(
+          (token) =>
+            token.chain &&
+            token.chain.toLowerCase() === selectedChain.toLowerCase()
+        );
+
+  const displayedTokens = limit ? filteredTokens.slice(0, limit) : filteredTokens;
 
   return (
     <div className="tokens-container">
-      <h3 className="deployedtokenstitle">Deployed Tokens</h3>
-      <h5 className="subtitletokens">Choose a token and start trading</h5>
+      <h3 className="titlelaunch">Deployed Tokens</h3>
+      <h5 className="subtitlefactory">Choose a token and start trading</h5>
+      
+      {/* Filter and Sort Buttons */}
+    
+      <div className="button-container">
+    <button className="custom-button"
+        onClick={() => sortTokens(sortOrder === "newest" ? "oldest" : "newest")}
+    >
+        Sort by {sortOrder === "newest" ? "Oldest" : "Newest"}
+    </button>
+    <select className="custom-select"
+        onChange={(e) => filterByChain(e.target.value)}
+        value={selectedChain}
+    >
+        <option value="all" className="all-chains-button">All Chains</option>
+        <option value="Sepolia">Sepolia</option>
+        <option value="Base">Base</option>
+        <option value="BSC">BSC</option>
+        <option value="OP">OP</option>
+        <option value="Arbitrum">Arbitrum</option>
+    </select>
+</div>
+      {/* Token Cards */}
       <div className="tokens-grid">
         {displayedTokens.map((token) => (
           <div
@@ -99,14 +133,13 @@ function TokensList({ limit }) {
               justifyContent: "space-between",
               backgroundColor: "#1D1D1D",
               borderRadius: "10px",
-              padding: "20px",
+              padding: "10px",
               color: "#ffffff",
               maxWidth: "600px",
-              margin: "20px auto",
+              margin: "10px auto",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
             }}
           >
-            {/* Left Section - Logo */}
             <div
               style={{
                 display: "flex",
@@ -123,148 +156,151 @@ function TokensList({ limit }) {
                     width: "100px",
                     height: "100px",
                     borderRadius: "50%",
-                    marginBottom: "10px",
+                    marginBottom: "0px",
                   }}
                 />
               )}
             </div>
-
-            {/* Right Section - Name, Contract Address, Market Data, and Socials */}
             <div
-              style={{
-                flex: 1,
-                marginLeft: "20px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
-            >
-              {/* Token Name */}
-              <h1 style={{ margin: 0, fontSize: "24px" }}>
-                {token.name ? token.name : "Loading..."}
-              </h1>
+  style={{
+    flex: 1,
+    padding:"10px",
+    marginLeft: "20px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  }}
+>
+  <h1 style={{ margin: 0, fontSize: "18 px" }}>
+    {token.name ? token.name : "Loading..."}
+  </h1>
+  {token.marketData ? (
+    <div style={{ marginTop: "0px" }}>
+      <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
+        Price: ${token.marketData.price.toLocaleString()}
+      </p>
+      <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
+        Market Cap: ${token.marketData.marketCap.toLocaleString()}
+      </p>
+      <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
+        24h Volume: ${token.marketData.volume24h.toLocaleString()}
+      </p>
+    </div>
+  ) : (
+    <p style={{ marginTop: "0px", color: "#aaaaaa" }}>
+      Loading market data...
+    </p>
+  )}
 
-              {/* Market Data */}
-              {token.marketData ? (
-                <div style={{ marginTop: "10px" }}>
-                  <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
-                    Price: ${token.marketData.price.toLocaleString()}
-                  </p>
-                  <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
-                    Market Cap: ${token.marketData.marketCap.toLocaleString()}
-                  </p>
-                  <p style={{ margin: 0, fontSize: "16px", color: "#ffffff" }}>
-                    24h Volume: ${token.marketData.volume24h.toLocaleString()}
-                  </p>
-                </div>
-              ) : (
-                <p style={{ marginTop: "10px", color: "#aaaaaa" }}>
-                  Loading market data...
-                </p>
-              )}
+ {/* Contract Address with Copy Button */}
+<div
+  style={{
+    display: "flex", // Aligns elements in a row
+    alignItems: "center", // Vertically aligns items
+    marginTop: "0px",
+    gap: "10px", // Space between the address and the button
+  }}
+>
+  <p style={{ margin: 0, fontSize: "14px", color: "#ffffff" }}>
+    CA: {token.address.slice(0, 6)}...{token.address.slice(-4)}
+  </p>
+  <button
+    onClick={() => navigator.clipboard.writeText(token.address)}
+    style={{
+      background: "none",
+      border: "1px solid gray", // Smooth gray border
+      borderRadius: "5px", // Rounded edges for smooth look
+      color: "#ffffff",
+      cursor: "pointer",
+      fontSize: "14px",
+      textDecoration: "none", // Removed underline for a cleaner button
+      padding: "5px 10px", // Added padding for better clickability
+      transition: "background-color 0.3s, border-color 0.3s", // Smooth transition for hover effect
+    }}
+    onMouseOver={(e) => {
+      e.target.style.backgroundColor = "#333"; // Slightly darker background on hover
+      e.target.style.borderColor = "#ffffff"; // White border on hover
+    }}
+    onMouseOut={(e) => {
+      e.target.style.backgroundColor = "none"; // Reset background
+      e.target.style.borderColor = "gray"; // Reset border
+    }}
+    onMouseDown={(e) => {
+      e.target.style.backgroundColor = "#555"; // Darker background when clicked
+    }}
+    onMouseUp={(e) => {
+      e.target.style.backgroundColor = "#333"; // Return to hover background
+    }}
+  >
+    Copy
+  </button>
+</div>
 
-              {/* Contract Address */}
-              {token.address && (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginTop: "10px",
-                    fontSize: "14px",
-                    color: "#aaaaaa",
-                  }}
-                >
-                  <p style={{ margin: 0 }}>
-                    Contract Address: {token.address.slice(0, 6)}...
-                    {token.address.slice(-4)}
-                  </p>
-                  <button
-                    onClick={() =>
-                      navigator.clipboard.writeText(token.address)
-                    }
-                    style={{
-                      background: "none",
-                      border: "1px solid #aaaaaa",
-                      borderRadius: "4px",
-                      marginLeft: "10px",
-                      color: "#aaaaaa",
-                      cursor: "pointer",
-                      padding: "2px 6px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Copy
-                  </button>
-                </div>
-              )}
 
-              {/* Social Links */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginTop: "10px",
-                  gap: "10px",
-                }}
-              >
-                {token.website && (
-                  <a
-                    href={`https://${token.website}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FaGlobe size={20} color="#ffffff" />
-                  </a>
-                )}
-                {token.telegram && (
-                  <a
-                    href={`https://${token.telegram}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FaTelegramPlane size={20} color="#ffffff" />
-                  </a>
-                )}
-                {token.twitter && (
-                  <a
-                    href={`https://${token.twitter}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <FaTwitter size={20} color="#ffffff" />
-                  </a>
-                )}
-              </div>
+  {/* Chain */}
+  <p style={{ marginTop: "2px", fontSize: "14px", color: "#ffffff" }}>
+    Chain: {token.chain || "N/A"}
+  </p>
 
-              {/* Trade Button */}
-              <button
-                onClick={() =>
-                  (window.location.href = `/trading/${token.chain}/${token.address}`)
-                }
-                style={{
-                  backgroundColor: "#EF10FFE1",
-                  color: "#ffffff",
-                  border: "none",
-                  padding: "10px 20px",
-                  fontSize: "18px",
-                  borderRadius: "10px",
-                  cursor: "pointer",
-                  marginTop: "5px",
-                  transition: "background-color 0.3s",
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.backgroundColor = "#1ec7de")
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.backgroundColor = "#EF10FFE1")
-                }
-              >
-                Trade
-              </button>
-            </div>
+  {/* Social Links */}
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      marginTop: "0px",
+      gap: "5px",
+    }}
+  >
+    {token.website && (
+      <a
+        href={`https://${token.website}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaGlobe size={16} color="#ffffff" />
+      </a>
+    )}
+    {token.telegram && (
+      <a
+        href={`https://${token.telegram}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaTelegramPlane size={16} color="#ffffff" />
+      </a>
+    )}
+    {token.twitter && (
+      <a
+        href={`https://${token.twitter}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaTwitter size={16} color="#ffffff" />
+      </a>
+    )}
+  </div>
+
+  {/* Trade Button */}
+  <button
+    onClick={() =>
+      (window.location.href = `/trading/${token.chain}/${token.address}`)
+    }
+    style={{
+      backgroundColor: "#EF10FFE1",
+      color: "#ffffff",
+      border: "none",
+      padding: "8px 20px",
+      fontSize: "16px",
+      borderRadius: "10px",
+      cursor: "pointer",
+      marginTop: "0px",
+      transition: "background-color 0.3s",
+    }}
+  >
+    Trade
+  </button>
+</div>
+
           </div>
         ))}
       </div>

@@ -52,7 +52,29 @@ body {
     margin-bottom: 20px; /* Space below subtitle */
     margin-top:-3px;
     font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    color:rgb(0, 0, 0);
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Technoma', sans-serif; /* Use Technoma font */
+}
+
+
+.input {
+    margin-bottom: 8px;
+}
+
+
 
 .input {
     width: 100%;
@@ -84,28 +106,32 @@ body {
 
 
 .custom-file-input {
-    margin: 6px 0px 0px 0px; /* Increased margin for more space */
-    padding: 8px 8px 8px 8px; /* Increased padding for a more prominent look */
-    background: #000000; /* Slightly transparent background */
-    border-radius: 360px; /* More pronounced rounded corners */
-    color: #ffffff;
-    text-align: left; /* Align text to the left */
-    border: 8px solid #ffffff4c; /* Add a solid white border */
-    transition: border-color 0.3s; /* Smooth transition for border color */
-    font-family: 'Technoma', sans-serif;
-    font-size:22px;
-    letter-spacing: 2px; /* Increased space between letters */
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    padding: 7px 25px;
+    background-color: #00000027;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0); 
 }
 
-.custom-file-input:hover {
-    border: 8px solid #ffffff7f;  /* Change border color on hover */
+.custom-file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .custom-file-input span {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #000000;
+    display: inline-block;
+    pointer-events: none;
 }
 
 

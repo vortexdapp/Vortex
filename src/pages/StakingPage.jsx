@@ -619,7 +619,7 @@ const StakingPage = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>
   ) : (
-    <p>Please connect your wallet using the button in top right.</p>
+    <p>Please connect your wallet</p>
   )}
 </div>
 

@@ -11,12 +11,22 @@
     gap: 20px;
 }
 
-.subtitletokens {
-  
-    text-align: center; /* Center the subtitle text horizontally */
-    font-size:18px;
-    font-family: 'Luciole', sans-serif; 
-   
+
+
+/* Add this new class to center the loading message */
+/* Add this new class to center the loading message */
+.loading-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    color: #ffffff; /* Optional: set text color */
+    text-align: center; /* Center text within the flex container */
+}
+
+.loading-message {
+    text-align: center; /* Center text within the paragraph */
+    margin: 0; /* Remove default margin */
 }
 
 /* Media query for small screens (phones) */
@@ -100,3 +110,44 @@
     color: #ffffff;
     font-weight: 200;
 }
+
+.chain-select {
+    background-color: #ff69b4; /* Pink background for the select */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding for better appearance */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.chain-select option {
+    background-color: #ff69b4; /* Pink background for options */
+    color: #fff; /* White text color for options */
+}
+
+.button-container {
+    display: flex; /* Aligns children in a row */
+    align-items: center; /* Vertically centers the items */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-bottom: 20px; /* Optional: space below the button container */
+}
+
+.custom-button, .custom-select {
+    margin: 0 10px; /* Small distance between buttons */
+    background-color: #1ec7de; /* Set background color */
+    color: #fff; /* Set text color to white */
+    border: none; /* Remove default border */
+    padding: 10px 40px; /* Increased padding horizontally for a bigger button */
+    border-radius: 10px; /* Optional: Add border radius */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+    font-size: 18px; /* Set font size */
+    font-family: 'Technoma', sans-serif; /* Set font family */
+}
+
+.custom-button:hover, .custom-select:hover {
+    background-color: #EF10FFE1; /* Optional: Darker shade on hover */
+    color: white; /* Keep text color white on hover */
+}
+
+
