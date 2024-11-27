@@ -134,8 +134,8 @@ const Dashboard = () => {
               flex: 1,
             }}
           >
-            <h1 className="wallet-address">{shortenAddress(address)}</h1>
-            <h2>{userData?.points || 0} Points</h2>
+            <h1 className="wallet-address">{shortenAddress(address)}: {userData?.points || 0} Points</h1>
+         <h2 className="subtitleFactory">A</h2>
           </div>
         </div>
 
