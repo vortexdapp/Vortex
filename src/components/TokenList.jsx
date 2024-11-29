@@ -188,9 +188,9 @@ function TokensList({ limit }) {
       </p>
     </div>
   ) : (
-    <p style={{ marginTop: "0px", color: "#aaaaaa" }}>
+    {/* <p style={{ marginTop: "0px", color: "#aaaaaa" }}>
       Loading market data...
-    </p>
+    </p> */}
   )}
 
  {/* Contract Address with Copy Button */}
