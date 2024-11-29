@@ -97,7 +97,7 @@ const Dashboard = () => {
     return (
       <div>
         <Header />
-        <div className="dashboard-container">
+        <div className="dashboard-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <p>Please connect your wallet to view your dashboard.</p>
         </div>
         <Footer />

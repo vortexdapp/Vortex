@@ -82,15 +82,26 @@
   }
 
   /* Display all three sections equally on mobile */
-  .div-logo,
-  .div-burger,
-  .div-button {
-    flex: 1; /* Each section takes up equal space */
-    max-width: 33%; /* 33% width */
+  .div-logo {
+    flex: 1; /* Logo takes up equal space */
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align logo to the left */
+    align-items: center; /* Center logo vertically */
+    text-align: left;
+  }
+  .div-burger {
+    flex: 1; /* Burger menu takes up equal space */
+    display: flex;
+    justify-content: center; /* Align burger menu to the center */
+    align-items: center; /* Center burger menu vertically */
     text-align: center;
+  }
+  .div-button {
+    flex: 1; /* Button takes up equal space */
+    display: flex;
+    justify-content: flex-end; /* Align button to the right */
+    align-items: center; /* Center button vertically */
+    text-align: right;
   }
 
   /* Show burger menu on mobile */

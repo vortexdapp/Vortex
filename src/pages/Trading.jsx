@@ -115,202 +115,36 @@ function Trading() {
           handleWalletConnect({ signer, provider });
         }}
       />
-      <div>
-      <div className="search-container" style={{ padding: "10px", textAlign: "center" }}>
+
+      {/* Search Container */}
+      <div className="search-container">
         <form onSubmit={handleSearchSubmit}>
           <input
-            className="input2"
+            className="input3"
             type="text"
             value={searchValue}
             onChange={handleSearchChange}
             placeholder="Enter token contract address"
-            style={{
-              width: "50%",
-              background:"white",
-              fontSize:"20px",
-              padding: "10px",
-              borderRadius: "10px",
-              border: "1px solid #ccc",
-              marginRight: "10px",
-            }}
+            aria-label="Token Contract Address" // Accessibility improvement
           />
-          <button
-            type="submit"
-            className="search-button"
-          >
+          <button type="submit" className="search-button">
             Search
           </button>
         </form>
-      </div>  
-      <div
-      className="token-container"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        backgroundColor: "#1D1D1D",
-        borderRadius: "10px",
-        padding: "20px",
-        color: "#ffffff",
-        maxWidth: "600px",
-        margin: "10px auto",
-      
-      }}
-    >
-      {/* Left Section - Logo */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {imageUrl && (
-          <img
-            src={imageUrl}
-            alt={tokenName}
-            style={{
-              width: "80px",
-              height: "80px",
-              borderRadius: "50%",
-              marginBottom: "6px",
-            }}
-          />
-        )}
       </div>
 
-      {/* Right Section - Name, Contract Address, and Socials */}
-      <div
-        style={{
-          flex: 1,
-          marginLeft: "20px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}
-      >
-        {/* Token Name */}
-        <h1 style={{ margin: 0, fontSize: "24px" }}>
-          {tokenName ? tokenName : "Loading..."}
-        </h1>
-
-        {/* Contract Address */}
-        {contractAddress && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginTop: "10px",
-              fontSize: "14px",
-              color: "#aaaaaa",
-            }}
-          >
-            <p style={{ margin: 0 }}>
-              Contract Address: {contractAddress.slice(0, 6)}...
-              {contractAddress.slice(-4)}
-            </p>
-            <button
-              onClick={() => navigator.clipboard.writeText(contractAddress)}
-              style={{
-                background: "none",
-                border: "1px solid #aaaaaa",
-                borderRadius: "4px",
-                marginLeft: "10px",
-                color: "#aaaaaa",
-                cursor: "pointer",
-                padding: "2px 6px",
-                fontSize: "12px",
-              }}
-            >
-              Copy
-            </button>
-          </div>
-        )}
-
-        {/* Social Links */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginTop: "05px",
-            gap: "10px",
-          }}
-        >
-          {website && (
-            <a
-              href={website.startsWith("http") ? website : `http://${website}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <FaGlobe size={18} color="#ffffff" />
-            </a>
-          )}
-          {telegram && (
-            <a
-              href={
-                telegram.startsWith("http") ? telegram : `https://${telegram}`
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <FaTelegramPlane size={18} color="#ffffff" />
-            </a>
-          )}
-          {twitter && (
-            <a
-              href={twitter.startsWith("http") ? twitter : `https://${twitter}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: "none" }}
-            >
-              <FaTwitter size={18} color="#ffffff" />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-
-    
-</div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-          margin: "0 auto",
-          maxWidth: "1200px",
-          padding: "30px",
-        }}
-      >
-        {/* Left Section (GeckoTerminal Embed with Pool Address) */}
-        <div style={{ flex: "0 0 70%", marginRight: "10px" }}>
-          <div
-            style={{
-              position: "relative",
-              height: "800px",
-              minWidth: "300px",
-            }}
-          >
+      {/* Main Content */}
+      <div className="main-content">
+        {/* Left Column (Chart) */}
+        <div className="chart-container">
+          <div className="chart-inner-container">
             {pool ? (
               <iframe
                 title="GeckoTerminal"
                 src={`https://www.geckoterminal.com/${chain}/pools/${pool}?embed=1&info=${
                   showInfo ? 1 : 0
                 }&swaps=1`}
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  height: "80%",
-                  top: 0,
-                  left: 0,
-                  border: "0",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                }}
+                className="chart-iframe"
                 allowFullScreen
               />
             ) : (
@@ -321,13 +155,101 @@ function Trading() {
           </div>
         </div>
 
-        {/* Right Section (Swapper) */}
-        <Swapper
-          signer={signer}
-          provider={provider}
-          tokenAddress={contractAddress}
-          chainId={chainId}
-        />
+        {/* Right Column */}
+        <div className="right-column">
+          {/* Token Information */}
+          <div className="token-container">
+            {/* Left Section - Logo */}
+            <div className="token-logo">
+              {imageUrl && (
+                <img src={imageUrl} alt={tokenName} className="token-image" />
+              )}
+            </div>
+
+            {/* Right Section - Name, Contract Address, and Socials */}
+            <div className="token-details">
+              {/* Token Name */}
+              <h1 className="token-name">
+                {tokenName ? tokenName : "Loading..."}
+              </h1>
+
+              {/* Contract Address */}
+              {contractAddress && (
+                <>
+                  <div className="contract-address-container">
+                    <p className="contract-address">
+                      CA: {contractAddress.slice(0, 6)}...
+                      {contractAddress.slice(-4)}
+                    </p>
+                    <button
+                      onClick={() =>
+                        navigator.clipboard.writeText(contractAddress)
+                      }
+                      className="copy-button"
+                    >
+                      Copy
+                    </button>
+                  </div>
+
+                  {/* Token Market Info */}
+                  <div className="token-market-info">
+                    <div className="market-info" style={{ fontSize: 'smaller' }}>Market Cap: Volume: Price:</div>
+                    
+                  </div>
+                </>
+              )}
+
+              {/* Social Links */}
+              <div className="social-links">
+                {website && (
+                  <a
+                    href={
+                      website.startsWith("http") ? website : `http://${website}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGlobe size={18} color="#ffffff" />
+                  </a>
+                )}
+                {telegram && (
+                  <a
+                    href={
+                      telegram.startsWith("http")
+                        ? telegram
+                        : `https://${telegram}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTelegramPlane size={18} color="#ffffff" />
+                  </a>
+                )}
+                {twitter && (
+                  <a
+                    href={
+                      twitter.startsWith("http") ? twitter : `https://${twitter}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTwitter size={18} color="#ffffff" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Swapper */}
+          <div className="swapper-container">
+            <Swapper
+              signer={signer}
+              provider={provider}
+              tokenAddress={contractAddress}
+              chainId={chainId}
+            />
+          </div>
+        </div>
       </div>
 
       <Footer />

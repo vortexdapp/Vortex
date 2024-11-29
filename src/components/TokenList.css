@@ -120,10 +120,6 @@
     cursor: pointer; /* Pointer cursor on hover */
 }
 
-.chain-select option {
-    background-color: #ff69b4; /* Pink background for options */
-    color: #fff; /* White text color for options */
-}
 
 .button-container2 {
     display: flex; /* Aligns children in a row */
@@ -140,14 +136,12 @@
     padding: 10px 40px; /* Increased padding horizontally for a bigger button */
     border-radius: 10px; /* Optional: Add border radius */
     cursor: pointer; /* Change cursor to pointer */
-    transition: background-color 0.3s; /* Smooth transition for background color */
-    font-size: 18px; /* Set font size */
+    font-size: 15px; /* Set font size */
     font-family: 'Technoma', sans-serif; /* Set font family */
 }
 
 .custom-button:hover, .custom-select:hover {
-    background-color: #EF10FFE1; /* Optional: Darker shade on hover */
+    background-color: #000000; /* Optional: Darker shade on hover */
     color: white; /* Keep text color white on hover */
 }
-
 

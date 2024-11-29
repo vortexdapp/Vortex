@@ -81,7 +81,7 @@ function TokensList({ limit }) {
 
   if (loading)
     return (
-      <div className="loading-container">
+      <div className="loading-container" >
     <p className="loading-message">Loading tokens...</p>
 </div>);
 
@@ -109,7 +109,7 @@ function TokensList({ limit }) {
     <button className="custom-button"
         onClick={() => sortTokens(sortOrder === "newest" ? "oldest" : "newest")}
     >
-        Sort by {sortOrder === "newest" ? "Oldest" : "Newest"}
+        Sort by {sortOrder === "newest" ? "Old" : "New"}
     </button>
     <select className="custom-select"
         onChange={(e) => filterByChain(e.target.value)}

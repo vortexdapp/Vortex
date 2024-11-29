@@ -201,7 +201,7 @@ const Swapper = ({ tokenAddress }) => {
       <h2>{isEthToToken ? "Buy with ETH" : "Sell to ETH"}</h2>
 
       <div className="balance-display">
-        <p>
+        <p className="balance-text" style={{ fontSize: '17px' }}>
           {isEthToToken ? "ETH Balance: " : "Token Balance: "} {balance}
         </p>
       </div>
