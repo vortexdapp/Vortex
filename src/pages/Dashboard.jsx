@@ -135,7 +135,7 @@ const Dashboard = () => {
             }}
           >
             <h1 className="wallet-address">{shortenAddress(address)}: {userData?.points || 0} Points</h1>
-         <h2 className="subtitleFactory">A</h2>
+         
           </div>
         </div>
 
